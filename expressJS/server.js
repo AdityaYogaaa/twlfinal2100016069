@@ -3,11 +3,17 @@ const mongoose = require("mongoose");
 const menuroute = require("./router/menuroute");
 const userroute = require("./router/userroute");
 const cors = require("cors");
+const helmet = require("helmet");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 const port = 3001;
+app.use(
+  helmet({
+    referrerPolicy: { policy: "no-referrer" },
+  })
+);
 
 // Replace <password> with your actual password
 const uri = "mongodb+srv://AdityaYoga:aditadit@cluster0.2sjjgbe.mongodb.net/?retryWrites=true&w=majority";
